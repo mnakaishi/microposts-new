@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :microposts
   resources :sessions, only: [:new, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
