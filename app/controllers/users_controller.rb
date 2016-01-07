@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
   before_action :authorization, only: [:edit, :update, :show]
 
-  def show
+  def show # 追加
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
   end
@@ -48,6 +48,16 @@ class UsersController < ApplicationController
       flash[:danger] = "Non authorization"
       redirect_to root_path
     end
+  end
+  
+  def followings # 課題
+    @user = User.find(params[:id])
+    @following_users = @user.following_users
+  end
+  
+  def followers # 課題
+    @user = User.find(params[:id])
+    @follower_users = @user.follower_users
   end
   
   
