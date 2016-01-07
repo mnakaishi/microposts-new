@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
-  before_action :authorization, only: [:edit, :update, :show]
+  # before_action :authorization, only: [:edit, :update, :show]
 
   def show # 追加
     @user = User.find(params[:id])
