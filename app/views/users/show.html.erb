@@ -9,6 +9,13 @@
     <%= @user.region %>
     <br>
     <%= @user.profile %>
+    
+    
+    <ul class="list-unstyled">  
+      <li><%= link_to 'follow', followings_user_path %>（<%= @user.following_users.count %>）</li>
+      <li><%= link_to 'follower', followers_user_path %>（<%= @user.follower_users.count %>）</li>
+    </ul>
+    
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>

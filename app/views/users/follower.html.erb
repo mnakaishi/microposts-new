@@ -3,6 +3,18 @@
     <%= @user.name %>
 </h1>
 
-<% @follower_users.each do |follower_user| %>
-    <%= follower_user.name %>
+<%# 
+ <% @follower_users.each do |follower_user| %> 
+<%#
+ <%= follower_user.name %>
+<%#
+ <% end %>
+
+<% if @user.follower_users.empty? %>
+    <div>No followers</div>
+<% else %>
+    <h1>Follower list</h1>
+    <% @user.follower_users.each do |follower_user| %>
+      <%= link_to follower_user.name, user_path(follower_user) %>
+    <% end %>
 <% end %>

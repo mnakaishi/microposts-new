@@ -3,6 +3,25 @@
     <%= @user.name %>
 </h1>
 
+<%#
 <% @following_users.each do |following_user| %>
+<%#
     <%= following_user.name %>
+<%#
+<% end %>
+
+
+<% if @user.following_users.empty? %>
+    <span>No follow member</span>
+<% else %>
+    <h1>Follow list</h1>
+    <div class="row">
+    <% @user.following_users.each do |following_user| %>
+      <div class="col-md-4">
+      <%= gravatar_for following_user %>
+          <span>ID:<%= following_user.id %></span>
+          <div><%= link_to following_user.name, user_path(following_user) %></div>
+      </div>
+    <% end %>
+    </div>
 <% end %>
