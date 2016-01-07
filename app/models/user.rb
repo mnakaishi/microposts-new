@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
+  validates :region, presence: true, length: { maximum: 20 }
+  validates :profile, presence: true, length: { maximum: 400 }
+  
   has_many :microposts
   
   has_many :following_relationships, class_name:  "Relationship",
