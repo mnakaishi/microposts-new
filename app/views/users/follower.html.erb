@@ -11,10 +11,15 @@
  <% end %>
 
 <% if @user.follower_users.empty? %>
-    <div>No followers</div>
+    <span>No Followers</span>
 <% else %>
-    <h1>Follower list</h1>
+    <h1>Followers list</h1>
+    <div class="row">
     <% @user.follower_users.each do |follower_user| %>
-      <%= link_to follower_user.name, user_path(follower_user) %>
+      <div class="col-md-4">
+      <%= gravatar_for follower_user %>
+        <span>ID:<%= follower_user.id %></span>
+        <div><%= link_to follower_user.name, user_path(follower_user) %></div>
+      </div>
     <% end %>
 <% end %>
