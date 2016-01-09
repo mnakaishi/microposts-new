@@ -1,17 +1,14 @@
-<h1>
-    <%= gravatar_for @user %>
-    <%= @user.name %>
-</h1>
 
 <%# 
- <% @follower_users.each do |follower_user| %> 
+<% @follower_users.each do |follower_user| %> 
 <%#
- <%= follower_user.name %>
+<%= follower_user.name %>
 <%#
- <% end %>
+<% end %>
+
 
 <% if @user.follower_users.empty? %>
-    <span>No Followers</span>
+    <span>No followers</span>
 <% else %>
     <h1>Followers list</h1>
     <div class="row">
@@ -22,4 +19,6 @@
         <div><%= link_to follower_user.name, user_path(follower_user) %></div>
       </div>
     <% end %>
+    </div>
 <% end %>
+
