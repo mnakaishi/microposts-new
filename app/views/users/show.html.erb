@@ -9,6 +9,7 @@
     <%= @user.region %>
     <br>
     <%= @user.profile %>
+
     
 
     <ul class="list-unstyled">  
@@ -24,7 +25,16 @@
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
+        <%= paginate(@microposts) %>
       </ol>
     <% end %>
   </div>
+  
+  
+　<% if @user.image? %>
+　　<%= image_tag @user.image.thumb.url %>
+　<% else %>
+　　<%= image_tag 'noimage.gif' %>
+　<% end %> 
+
 </div>

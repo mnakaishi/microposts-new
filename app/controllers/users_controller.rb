@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show # 追加
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
+    @microposts = @microposts.page(params[:page]).per(5).order(created_at: :desc) #paginate
   end
 
   
@@ -62,12 +63,15 @@ class UsersController < ApplicationController
     render 'follower'
   end
   
+  def index
+    @users = User.page(params[:page]).per(5).order(:id)
+  end
   
   
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :region, :profile)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :region, :profile, :image)
   end
 end
 

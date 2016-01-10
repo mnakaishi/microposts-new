@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_secure_password
   
   validates :region, presence: true, length: { maximum: 20 }, on: :update
-  validates :profile, presence: true, length: { maximum: 400 }
+  validates :profile, length: { maximum: 400 }
   
   has_many :microposts
   
@@ -42,4 +42,7 @@ class User < ActiveRecord::Base
   def feed_items
     Micropost.where(user_id: following_user_ids + [self.id])
   end
+  
+  mount_uploader :image, ImageUploader
+
 end
