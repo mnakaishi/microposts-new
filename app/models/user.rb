@@ -45,28 +45,4 @@ class User < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
   
-  # favorite
-  
-  has_many :favorite_relationships, class_name:  "FavoriteRelationship",
-                                     foreign_key: "user_id",
-                                     dependent:   :destroy
-  has_many :favorite_microposts, through: :favorite_relationships, source: :micropost
-  
-  
-  # 他の投稿をいいねする
-  def like(other_micropost)
-    favorite_relationships.create(micropost_id: other_micropost.id)
-  end
-
-  # いいねを取り消す
-  def unlike(other_micropost)
-    favorite_relationships.find_by(micropost_id: other_micropost.id).destroy
-  end
-
-  # ある投稿をいいねしているかどうか？
-  def liking?(other_micropost)
-    favorite_microposts.include?(other_micropost)
-  end
-
-  
 end

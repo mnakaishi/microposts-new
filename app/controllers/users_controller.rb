@@ -67,10 +67,7 @@ class UsersController < ApplicationController
     @users = User.page(params[:page]).per(5).order(:id)
   end
 
-  def favorites
-    @user = User.find(params[:id])
-    @favorite_microposts = @user.favorite_microposts
-  end
+
   
   private
   
