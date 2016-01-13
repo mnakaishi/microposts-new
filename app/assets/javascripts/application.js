@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+jQuery(formObj)
+ .bind("ajax:loading", function(xhr){})
+ .bind("ajax:success", function(data, status, xhr){})
+ .bind("ajax:complete", function(xhr){})
+ .bind("ajax:failure", function(xhr){});

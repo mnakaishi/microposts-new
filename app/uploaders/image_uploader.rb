@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # mount_uploader :image, ImageUploader
   
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -23,7 +23,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   #  process :resize_to_limit => [1400, 1400]
   # end
 
-　process :resize_to_limit => [1400, 1400]
+  # process :resize_to_limit => [1400, 1400]
+
+  version :thumb do # image.thmb,url に対応する
+    process :resize_to_limit => [160, 160] # version :thumb へのサイズ名言
+  end
+
+  process :resize_to_limit => [1400, 1400] # アップロード時に image.url の画像のサイズ制限
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

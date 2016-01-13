@@ -10,6 +10,12 @@
     <br>
     <%= @user.profile %>
 
+　<% if @user.image? %>
+　　<%= image_tag @user.image.thumb.url %>
+　<% else %>
+　　<%= image_tag 'noimage.gif' %>
+　<% end %> 
+　
     
 
     <ul class="list-unstyled">  
@@ -31,10 +37,6 @@
   </div>
   
   
-　<% if @user.image? %>
-　　<%= image_tag @user.image.thumb.url %>
-　<% else %>
-　　<%= image_tag 'noimage.gif' %>
-　<% end %> 
+
 
 </div>
