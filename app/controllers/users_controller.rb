@@ -16,7 +16,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to the Sample App!"
+    #  flash[:success] = "Welcome to the Sample App!"
+            flash[:success] = t(:user_created) # translate
       redirect_to @user
     else
       render 'new'
@@ -25,7 +26,8 @@ class UsersController < ApplicationController
   
   def update # 追加
     if @user.update(user_params)
-      flash[:success] = "profile updated"
+   #   flash[:success] = "profile updated"
+            flash[:success] = t(:user_updated) # translate
       redirect_to user_path
     else
       render 'edit'
