@@ -68,6 +68,14 @@ class UsersController < ApplicationController
   end
 
 
+  def favorites
+    @user = User.find(params[:id])
+    @microposts = @user.favorite_microposts.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
   
   private
   

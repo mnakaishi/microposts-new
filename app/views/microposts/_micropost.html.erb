@@ -8,5 +8,7 @@
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
     <% end %>
+    <%= render partial: 'shared/favorite_form', locals: { micropost: micropost } %>
+    
   </span>
 </li>

@@ -45,4 +45,18 @@ class User < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
   
+ # favorite
+ has_many :favorites
+ has_many :favorite_microposts, class_name: "Micropost", through: :favorites, source: :micropost 
+ 
+ 
+  def favorite(micropost)
+    favorites.create(micropost_id: micropost.id)
+  end
+  def unfavorite(micropost)
+    favorites.find_by(micropost_id: micropost.id).destroy
+  end
+  def favorite?(micropost)
+    favorite_microposts.include?(micropost)
+  end 
 end
