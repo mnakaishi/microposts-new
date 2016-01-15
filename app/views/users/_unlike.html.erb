@@ -1,7 +1,0 @@
-<%= form_for(current_user.favorite_relationships.find_by(micropost_id: micropost.id),
-             url: destroy_each_id_favorite_relationship_path(micropost.id),
-             html: { method: :delete },
-             remote: true) do |f| %>
-  <div><%= hidden_field_tag :micropost_id, micropost.id %></div>
-  <%= f.submit "Unlike", class: "btn" %>
-<% end %>
