@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+    # favorite
+  resources :favorites, only: [:create, :destroy]
+  
+    # retweet
+  resources :retweets, only: [:create, :destroy]
   
   resources :users do
     member do
@@ -28,11 +33,6 @@ Rails.application.routes.draw do
       get 'favorites'
     end
   end 
-  
-    # favorite
-  resources :favorites, only: [:create, :destroy]
-  
-  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

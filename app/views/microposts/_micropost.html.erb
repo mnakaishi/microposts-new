@@ -10,6 +10,7 @@
                                       data: { confirm: t(:micropost_deleted_confirm) } %>
     <% end %>
     <%= render partial: 'shared/favorite_form', locals: { micropost: micropost } %>
+    <%= render partial: 'microposts/retweet_form', locals: {micropost: micropost} %>
     
   </span>
 </li>

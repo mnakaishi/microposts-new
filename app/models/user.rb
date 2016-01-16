@@ -50,6 +50,36 @@ class User < ActiveRecord::Base
  has_many :favorite_microposts, class_name: "Micropost", through: :favorites, source: :micropost 
  
  
+  # retweet 
+  # あるユーザーが、リツイートしたつぶやき
+  has_many :user_retweet_relations, class_name: "Retweet",
+                                     foreign_key: "user_id",
+                                     dependent:   :destroy
+  has_many :user_retweets, through: :user_retweet_relations, source: :micropost
+  
+  # あるつぶやきをリツイートしている人
+  has_many :retweet_user_relations, class_name: "Retweet",
+                                     foreign_key: "micropost_id",
+                                     dependent:   :destroy
+  has_many :retweeted_users, through: :retweet_user_relations, source: :user
+  
+    # register retweet 
+  def retweet(id)
+    user_retweet_relations.create(micropost_id: id)
+  end
+
+  # cancel retweet
+  def unretweet(id)
+    Retweet.find_by(id:id).destroy
+  end
+
+  # check if retweeted?
+  def retweeted?(micropost)
+    user_retweets.include?(micropost)
+  end
+  
+  
+  # favorite
   def favorite(micropost)
     favorites.create(micropost_id: micropost.id)
   end

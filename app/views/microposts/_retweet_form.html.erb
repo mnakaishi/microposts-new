@@ -1,0 +1,9 @@
+<div id="retweet_form">
+  <% if current_user.retweeted?(micropost) %>
+    <%= render partial: 'microposts/unretweet', locals: {micropost: micropost} %>
+  <% else %>
+    <% unless micropost.user_id == current_user.id %>
+      <%= render partial: 'microposts/retweet', locals: {micropost: micropost} %>
+    <% end %>
+  <% end %>
+</div>
